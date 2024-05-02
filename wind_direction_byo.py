@@ -1,6 +1,7 @@
 from gpiozero import MCP3002
 import time
 import math
+import random
 
 adc = MCP3002(channel=0)
 count = 0
@@ -65,7 +66,9 @@ def get_value(length=5):
     start_time = time.time()
 
     while time.time() - start_time <= length:
-        wind = round(adc.value * 3.3, 1)
+        # wind = round(adc.value * 3.3, 1)
+        wind = random.choice(list(volts.keys()))
+
         if not wind in volts:  # keep only good measurements
             print('unknown value ' + str(wind))
             pass
