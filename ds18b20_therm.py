@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import os, glob, time
+import random
 
 # add the lines below to /etc/modules (reboot to take effect)
 # w1-gpio
