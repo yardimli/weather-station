@@ -74,7 +74,7 @@ print('begin')
 
 wind_speed_sensor = Button(5)
 wind_speed_sensor.when_activated = spin
-temp_probe = ds18b20_therm.DS18B20()
+# temp_probe = ds18b20_therm.DS18B20()
 
 rain_sensor = Button(6)
 rain_sensor.when_pressed = bucket_tipped
