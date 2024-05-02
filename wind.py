@@ -1,6 +1,7 @@
 from gpiozero import Button
 import time
 import math
+import random
 
 wind_count = 0
 radius_cm = 9.0
