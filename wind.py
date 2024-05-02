@@ -24,10 +24,12 @@ def calculate_speed(time_sec):
 
 wind_speed_sensor = Button(5)
 wind_speed_sensor.when_pressed = spin
-spin()
-spin()
 
 while True:
     wind_count = 0
+    y = random.uniform(1, 15)
+    for x in range(y):
+        spin()
+
     time.sleep(wind_interval)
     print( calculate_speed(wind_interval), "cm/h")
