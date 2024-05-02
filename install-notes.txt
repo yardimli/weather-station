@@ -20,3 +20,23 @@ also need to add --break-system-packages
 sudo pip3 install mysqlclient --break-system-packages
 
 enable i2c from pi desktop config
+
+quick test with random data
+python bme280_sensor.py
+
+
+sudo nano /boot/firmware/config.txt
+add
+dtoverlay=w1-gpio
+bellow
+dtparam=audio=on
+
+sudo nano /etc/modules
+at the bottom add:
+w1-gpio
+w1-therm
+
+reboot
+
+test
+python ds18b20_therm.py

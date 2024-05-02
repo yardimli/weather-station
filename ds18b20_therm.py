@@ -41,5 +41,6 @@ class DS18B20(object):
         return temp_c
 
 if __name__ == "__main__":
-    obj = DS18B20()
-    print("Temp: %s C" % obj.read_temp())
+    # obj = DS18B20()
+    # print("Temp: %s C" % obj.read_temp())
+    print("Temp: %s C" % random.uniform(-10, 35) )
