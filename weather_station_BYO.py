@@ -7,7 +7,7 @@ import statistics
 import ds18b20_therm
 import random
 
-# import database
+import database
 
 wind_count = 0  # Counts how many half-rotations
 radius_cm = 9.0  # Radius of your anemometer
@@ -79,6 +79,8 @@ wind_speed_sensor.when_activated = spin
 rain_sensor = Button(6)
 rain_sensor.when_pressed = bucket_tipped
 
+db = database.weather_database()
+
 while True:
 
     start_time = time.time()
@@ -116,3 +118,6 @@ while True:
     print('Wind Dir:', round(wind_average, 1), 'Wind Speed:', round(wind_speed, 1), 'Wind Gust:', round(wind_gust, 1),
           'Rainfall:', round(rainfall, 1), 'Humidity:', round(humidity, 1), 'Pressure:', round(pressure, 1),
           'Ambient Temp:', round(ambient_temp, 1), 'Ground Temp:', round(ground_temp, 1))
+
+    db.insert(ambient_temp, ground_temp, 0, pressure, humidity, wind_average, wind_speed, wind_gust, rainfall)
+
