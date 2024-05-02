@@ -109,7 +109,7 @@ while True:
     # humidity, pressure, ambient_temp = bme280_sensor.read_all()
     humidity = random.uniform(0, 100)  # Random humidity percentage between 0% and 100%
     pressure = random.uniform(980, 1050)  # Random pressure in hPa between 980 and 1050
-    ambient_temperature = random.uniform(-10, 35)  # Random temperature in °C between -10 and 35
+    ambient_temp = random.uniform(-10, 35)  # Random temperature in °C between -10 and 35
 
     print('Wind Dir:', round(wind_average, 1), 'Wind Speed:', round(wind_speed, 1), 'Wind Gust:', round(wind_gust, 1),
           'Rainfall:', round(rainfall, 1), 'Humidity:', round(humidity, 1), 'Pressure:', round(pressure, 1),
