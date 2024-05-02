@@ -28,7 +28,7 @@ wind_speed_sensor.when_pressed = spin
 
 while True:
     wind_count = 0
-    y = random.uniform(1, 15)
+    y = random.randint(1, 15)
     for x in range(y):
         spin()
 
