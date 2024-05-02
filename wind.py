@@ -27,7 +27,7 @@ wind_speed_sensor.when_pressed = spin
 spin()
 spin()
 
-while true:
+while True:
     wind_count = 0
     time.sleep(wind_interval)
     print( calculate_speed(wind_interval), "cm/h")
