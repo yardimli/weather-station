@@ -86,8 +86,8 @@ while True:
         wind_start_time = time.time()
         reset_wind()
 
-        y = random.randint(1, 5)
-        if y >= 2:
+        y = random.randint(1, 15)
+        for x in range(y):
             spin()
 
         # time.sleep(wind_interval)
