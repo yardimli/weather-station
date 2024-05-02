@@ -81,3 +81,9 @@ sudo mysql
 use weather;
 select count(*) from WEATHER_MEASUREMENT;
 select * from WEATHER_MEASUREMENT;
+
+
+pip install pymysql --break-system-packages
+update rds-config.json
+run
+python aws-rds-db-test.py
