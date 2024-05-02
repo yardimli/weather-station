@@ -40,3 +40,12 @@ reboot
 
 test
 python ds18b20_therm.py
+
+test
+python wind.py
+
+from config make sure
+spi, i2c and 1-wire are enabled
+
+test
+python weather_station_BYO.py
