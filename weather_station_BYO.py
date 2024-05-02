@@ -80,14 +80,16 @@ rain_sensor = Button(6)
 rain_sensor.when_pressed = bucket_tipped
 
 while True:
-    y = random.randint(1, 5)
-    if y>=2:
-        spin()
 
     start_time = time.time()
     while time.time() - start_time <= interval:
         wind_start_time = time.time()
         reset_wind()
+
+        y = random.randint(1, 5)
+        if y >= 2:
+            spin()
+
         # time.sleep(wind_interval)
         while time.time() - wind_start_time <= wind_interval:
             store_directions.append(wind_direction_byo.get_value())
