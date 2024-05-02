@@ -80,7 +80,7 @@ rain_sensor = Button(6)
 rain_sensor.when_pressed = bucket_tipped
 
 while True:
-    y = random.randint(1, 3)
+    y = random.randint(1, 5)
     if y>=2:
         spin()
 
