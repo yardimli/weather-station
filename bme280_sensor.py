@@ -7,7 +7,7 @@ port = 1
 address = 0x77  # Adafruit BME280 address. Other BME280s may be different
 bus = smbus2.SMBus(port)
 
-bme280.load_calibration_params(bus, address)
+# bme280.load_calibration_params(bus, address)
 
 while True:
     # bme280_data = bme280.sample(bus,address)
