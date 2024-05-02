@@ -1,0 +1,20 @@
+use putty ssh to user@raspberrypi.local
+
+or hover over wifi on raspberry pi desktop to see ip address
+
+if (forgot username and password when creating the sd card)
+    can find username from terminal on the pi
+    can set password from the config utility again
+
+git clone https://github.com/yardimli/weather-station.git
+
+(install with the extra parameter  --break-system-packages)
+
+sudo pip3 install RPi.bme280 --break-system-packages
+
+-- sudo apt-get install -y mariadb-server mariadb-client libmariadbclient-dev
+doesnt work so use the following instead
+sudo apt-get install -y mariadb-server mariadb-client libmariadb-dev
+
+also need to add --break-system-packages
+sudo pip3 install mysqlclient --break-system-packages
