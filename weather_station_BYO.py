@@ -22,7 +22,14 @@ gust = 0
 store_speeds = []
 store_directions = []
 
-number_of_readings_to_take = 5
+credentials_file = os.path.join(os.path.dirname(__file__), "weather-config.json")
+f = open(credentials_file, "r")
+credentials = json.load(f)
+f.close()
+for key, value in credentials.items():  # remove whitespace
+    credentials[key] = value.strip()
+
+number_of_readings_to_take = credentials['READINGS_EACH_RUN']
 readings_counter = 0
 
 # Every half-rotation, add 1 to count

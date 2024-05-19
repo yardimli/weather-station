@@ -38,8 +38,8 @@
 		<h1 style="margin:10px;" class="text-center"><img src="images/android-chrome-192x192.png" style="height: 64px;"> Pi Weather</h1>
 
 		<!-- Canvas for chart -->
-		<canvas id="weatherChart" width="100%" height="200"></canvas>
-
+		<canvas id="weatherChart" class="weather-chart"></canvas>
+		
 		<table class="table table-bordered table-hover" id="data-table">
 			<thead>
 			<tr>
