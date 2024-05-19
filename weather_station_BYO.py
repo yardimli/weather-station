@@ -6,6 +6,7 @@ import wind_direction_byo
 import statistics
 import ds18b20_therm
 import random
+import os
 
 import database
 
