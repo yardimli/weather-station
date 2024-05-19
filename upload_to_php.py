@@ -13,7 +13,6 @@ from database import weather_database  # Import the class from your database.py 
 logging.basicConfig(filename='upload_to_php.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
-
 def main():
     try:
         # Instantiate your weather_database class

@@ -22,6 +22,8 @@ gust = 0
 store_speeds = []
 store_directions = []
 
+number_of_readings_to_take = 5
+readings_counter = 0
 
 # Every half-rotation, add 1 to count
 def spin():
@@ -81,7 +83,9 @@ rain_sensor.when_pressed = bucket_tipped
 
 db = database.weather_database()
 
-while True:
+while readings_counter < number_of_readings_to_take:
+
+    readings_counter += 1
 
     start_time = time.time()
     while time.time() - start_time <= interval:
@@ -120,4 +124,3 @@ while True:
           'Ambient Temp:', round(ambient_temp, 1), 'Ground Temp:', round(ground_temp, 1))
 
     db.insert(ambient_temp, ground_temp, 0, pressure, humidity, wind_average, wind_speed, wind_gust, rainfall)
-    

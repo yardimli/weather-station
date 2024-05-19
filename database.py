@@ -54,7 +54,8 @@ class weather_database:
         return val if val != None else "NULL"
 
     def insert(self, ambient_temperature, ground_temperature, air_quality, air_pressure, humidity, wind_direction,
-               wind_speed, wind_gust_speed, rainfall, created=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")):
+               wind_speed, wind_gust_speed, rainfall):
+        created = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         params = (ambient_temperature,
                   ground_temperature,
                   air_quality,
