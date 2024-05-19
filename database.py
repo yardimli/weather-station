@@ -96,9 +96,15 @@ class weather_database:
                     "created": row["CREATED"].strftime("%Y-%m-%dT%H:%M:%S")
                 }
 
+                headers = {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                    'Content-Type': 'application/x-www-form-urlencoded'  # Or 'application/json' if needed
+                }
+
                 try:
-                    response = requests.post(credentials['REMOTE_URL'], data=data)
-                    print(f"Raw response: {response.text} from {credentials['REMOTE_URL']}")
+                    response = requests.post(credentials['REMOTE_URL'], data=data, headers=headers)
+                    print(f"Request sent to {credentials['REMOTE_URL']} with data: {data} and headers {headers}")
+                    print(f"Raw response: __{response.text}--")
                     response_data = response.json()  # Assuming your PHP script returns JSON
 
                     if response.status_code == 200 and response_data.get('save_id') is not None:
