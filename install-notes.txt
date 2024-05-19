@@ -82,7 +82,10 @@ use weather;
 select count(*) from WEATHER_MEASUREMENT;
 select * from WEATHER_MEASUREMENT;
 
+--------------------------------------------------
+RUN the create.sql file on the REMOTE servers database
 
+edit config.php to set the database settings on the REMOTE server
 --------------------------------------------------
 USING PHP ON REMOTE SERVER TO GET DATA
 use crontab

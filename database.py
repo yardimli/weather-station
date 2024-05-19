@@ -103,8 +103,8 @@ class weather_database:
 
                 try:
                     response = requests.post(credentials['REMOTE_URL'], data=data, headers=headers)
-                    print(f"Request sent to {credentials['REMOTE_URL']} with data: {data} and headers {headers}")
-                    print(f"Raw response: __{response.text}--")
+                    # print(f"Request sent to {credentials['REMOTE_URL']} with data: {data} and headers {headers}")
+                    # print(f"Raw response: {response.text}")
                     response_data = response.json()  # Assuming your PHP script returns JSON
 
                     if response.status_code == 200 and response_data.get('save_id') is not None:
