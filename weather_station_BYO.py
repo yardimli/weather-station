@@ -120,4 +120,4 @@ while True:
           'Ambient Temp:', round(ambient_temp, 1), 'Ground Temp:', round(ground_temp, 1))
 
     db.insert(ambient_temp, ground_temp, 0, pressure, humidity, wind_average, wind_speed, wind_gust, rainfall)
-
+    

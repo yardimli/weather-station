@@ -95,3 +95,9 @@ CREATE DATABASE weather1;
 
 update rds-config with database name;
 
+
+--------------------------------------------------
+USING PHP ON REMOTE SERVER TO GET DATA
+use crontab
+0 */2 * * * ~/weather-station/upload_to_php.py
+to upload data to remote server
