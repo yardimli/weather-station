@@ -12,8 +12,11 @@ class mysql_database:
         f = open(credentials_file, "r")
         credentials = json.load(f)
         f.close()
-        for key, value in credentials.items():  # remove whitespace
-            credentials[key] = value.strip()
+
+        # Remove whitespace from strings in credentials
+        for key, value in credentials.items():
+            if isinstance(value, str):
+                credentials[key] = value.strip()
 
         self.connection = MySQLdb.connect(user=credentials["USERNAME"], password=credentials["PASSWORD"],
                                           database=credentials["DATABASE"])
@@ -75,8 +78,11 @@ class weather_database:
         f = open(credentials_file, "r")
         credentials = json.load(f)
         f.close()
-        for key, value in credentials.items():  # remove whitespace
-            credentials[key] = value.strip()
+
+        # Remove whitespace from strings in credentials
+        for key, value in credentials.items():
+            if isinstance(value, str):
+                credentials[key] = value.strip()
 
         results = self.db.query(self.upload_select_template)
         rows_count = len(results)
