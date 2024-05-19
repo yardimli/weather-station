@@ -2,6 +2,6 @@
   "HOST": "localhost",
   "USERNAME": "pi",
   "PASSWORD": "my_weather_station_123",
-  "DATABASE": "weather"
+  "DATABASE": "weather",
   "REMOTE_URL": "https://raspberry-weather.info/save-weather-data.php"
 }
