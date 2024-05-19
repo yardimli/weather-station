@@ -1,7 +1,10 @@
 #!/usr/bin/python3
-import MySQLdb, datetime, http.client, json, os
-import io
 
+import MySQLdb
+import datetime
+import json
+import os
+import requests
 
 class mysql_database:
     def __init__(self):
