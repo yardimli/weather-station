@@ -7,6 +7,7 @@ import statistics
 import ds18b20_therm
 import random
 import os
+import json
 
 import database
 
