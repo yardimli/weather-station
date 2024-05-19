@@ -28,8 +28,11 @@ credentials_file = os.path.join(os.path.dirname(__file__), "weather-config.json"
 f = open(credentials_file, "r")
 credentials = json.load(f)
 f.close()
-for key, value in credentials.items():  # remove whitespace
-    credentials[key] = value.strip()
+
+# Remove whitespace from strings in credentials
+for key, value in credentials.items():
+    if isinstance(value, str):
+        credentials[key] = value.strip()
 
 number_of_readings_to_take = credentials['READINGS_EACH_RUN']
 readings_counter = 0
