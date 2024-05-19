@@ -97,7 +97,7 @@ class weather_database:
                 }
 
                 try:
-                    response = requests.post(credentials['REMOTE_URL'], data=data, verify=False)
+                    response = requests.post(credentials['REMOTE_URL'], data=data)
                     print(f"Raw response: {response.text} from {credentials['REMOTE_URL']}")
                     response_data = response.json()  # Assuming your PHP script returns JSON
 
