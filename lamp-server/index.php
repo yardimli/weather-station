@@ -39,7 +39,7 @@
 
 		<!-- Canvas for chart -->
 		<canvas id="weatherChart" class="weather-chart"></canvas>
-		
+
 		<table class="table table-bordered table-hover" id="data-table">
 			<thead>
 			<tr>

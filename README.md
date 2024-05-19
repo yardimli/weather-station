@@ -14,7 +14,7 @@ This repo contains the updated version of the software, re-engineered for the [S
 
 ### Screenshots
 
-![Simple View](https://github.com/yardimli/weather-station/blob/main/images/logo.jpg?raw=true)
+![Simple View](https://github.com/yardimli/weather-station/blob/test-1/lamp-server/images/logo.jpg?raw=true)
 
 
 ## Installation
