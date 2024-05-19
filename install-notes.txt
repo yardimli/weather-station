@@ -83,19 +83,6 @@ select count(*) from WEATHER_MEASUREMENT;
 select * from WEATHER_MEASUREMENT;
 
 
-pip install pymysql --break-system-packages
--- edit rds-config.json
-nano rds-config.json
-
-run
-python aws-rds-db-test.py
--- if you forgot to create database initally run
-mysql -h weather-stati......us-west-1.rds.amazonaws.com -u admin -p
-CREATE DATABASE weather1;
-
-update rds-config with database name;
-
-
 --------------------------------------------------
 USING PHP ON REMOTE SERVER TO GET DATA
 use crontab

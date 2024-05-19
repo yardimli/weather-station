@@ -11,6 +11,8 @@ class mysql_database:
         f.close()
         for key, value in credentials.items():  # remove whitespace
             credentials[key] = value.strip()
+            print(key)
+            print(value)
 
         self.connection = MySQLdb.connect(user=credentials["USERNAME"], password=credentials["PASSWORD"],
                                           database=credentials["DATABASE"])
