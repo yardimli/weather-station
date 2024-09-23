@@ -19,7 +19,6 @@ CM_IN_A_KM = 100000.0
 SECS_IN_AN_HOUR = 3600
 ADJUSTMENT = 1.18
 BUCKET_SIZE = 0.2794
-rain_count = 0
 gust = 0
 store_speeds = []
 store_directions = []
@@ -35,6 +34,8 @@ for key, value in credentials.items():
         credentials[key] = value.strip()
 
 number_of_readings_to_take = credentials['READINGS_EACH_RUN']
+use_real_data = credentials.get('USE_REAL_DATA', False)
+
 readings_counter = 0
 
 # Every half-rotation, add 1 to count
@@ -62,18 +63,6 @@ def calculate_speed(time_sec):
 
     return final_speed
 
-
-def bucket_tipped():
-    global rain_count
-    rain_count = rain_count + 1
-    # print (rain_count * BUCKET_SIZE)
-
-
-def reset_rainfall():
-    global rain_count
-    rain_count = 0
-
-
 def reset_wind():
     global wind_count
     wind_count = 0
@@ -84,14 +73,16 @@ def reset_gust():
     gust = 0
 
 
+def simulate_wind():
+    global wind_count
+    wind_count += random.randint(1, 15)
+
 print('begin')
 
-wind_speed_sensor = Button(5)
-wind_speed_sensor.when_activated = spin
-# temp_probe = ds18b20_therm.DS18B20()
-
-rain_sensor = Button(6)
-rain_sensor.when_pressed = bucket_tipped
+if use_real_data:
+    wind_speed_sensor = Button(5)
+    wind_speed_sensor.when_activated = spin
+    temp_probe = ds18b20_therm.DS18B20()
 
 db = database.weather_database()
 
@@ -104,13 +95,19 @@ while readings_counter < number_of_readings_to_take:
         wind_start_time = time.time()
         reset_wind()
 
-        y = random.randint(1, 15)
-        for x in range(y):
-            spin()
+        if use_real_data:
+            time.sleep(wind_interval)
+        else:
+            simulate_wind()
+            time.sleep(wind_interval)
+
 
         # time.sleep(wind_interval)
         while time.time() - wind_start_time <= wind_interval:
-            store_directions.append(wind_direction_byo.get_value())
+            if use_real_data:
+                store_directions.append(wind_direction_byo.get_value())
+            else:
+                store_directions.append(random.uniform(0, 360))
 
         final_speed = calculate_speed(wind_interval)  # Add this speed to the list
         store_speeds.append(final_speed)
@@ -118,21 +115,30 @@ while readings_counter < number_of_readings_to_take:
     wind_average = wind_direction_byo.get_average(store_directions)
     wind_gust = max(store_speeds)
     wind_speed = statistics.mean(store_speeds)
-    rainfall = rain_count * BUCKET_SIZE
-    reset_rainfall()
+
     store_speeds = []
-    # print(store_directions)
     store_directions = []
-    # ground_temp = temp_probe.read_temp()
-    ground_temp = random.uniform(-10, 35)
-    # ground_temp = 0
-    # humidity, pressure, ambient_temp = bme280_sensor.read_all()
-    humidity = random.uniform(0, 100)  # Random humidity percentage between 0% and 100%
-    pressure = random.uniform(980, 1050)  # Random pressure in hPa between 980 and 1050
-    ambient_temp = random.uniform(-10, 35)  # Random temperature in °C between -10 and 35
+    rainfall = 0
+
+    if use_real_data:
+        try:
+            ground_temp = temp_probe.read_temp()
+            humidity, pressure, ambient_temp = bme280_sensor.read_all()
+        except Exception as e:
+            print(f"Error reading sensors: {e}")
+            ground_temp = 0
+            humidity = 0
+            pressure = 1000
+            ambient_temp = 0
+    else:
+        # Use random data
+        humidity = random.uniform(0, 100)
+        pressure = random.uniform(980, 1050)
+        ambient_temp = random.uniform(-10, 35)
+        ground_temp = random.uniform(-10, 35)
 
     print('Wind Dir:', round(wind_average, 1), 'Wind Speed:', round(wind_speed, 1), 'Wind Gust:', round(wind_gust, 1),
-          'Rainfall:', round(rainfall, 1), 'Humidity:', round(humidity, 1), 'Pressure:', round(pressure, 1),
+          'Humidity:', round(humidity, 1), 'Pressure:', round(pressure, 1),
           'Ambient Temp:', round(ambient_temp, 1), 'Ground Temp:', round(ground_temp, 1))
 
     db.insert(ambient_temp, ground_temp, 0, pressure, humidity, wind_average, wind_speed, wind_gust, rainfall)
